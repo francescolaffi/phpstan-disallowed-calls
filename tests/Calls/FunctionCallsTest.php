@@ -103,7 +103,10 @@ class FunctionCallsTest extends RuleTestCase
 						__DIR__ . '/../src/*-allow/*.*',
 					],
 					'disallowParams' => [
-						1 => 'sha1',
+						[
+							'position' => 1,
+							'value' => 'sha1',
+						],
 					],
 				],
 				[
@@ -125,7 +128,10 @@ class FunctionCallsTest extends RuleTestCase
 						__DIR__ . '/../src/*-allow/*.*',
 					],
 					'allowExceptCaseInsensitiveParams' => [
-						1 => 'SHA1',
+						[
+							'position' => 1,
+							'value' => 'SHA1',
+						],
 					],
 				],
 				[

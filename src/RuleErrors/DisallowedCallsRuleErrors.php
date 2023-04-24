@@ -52,6 +52,7 @@ class DisallowedCallsRuleErrors
 	 */
 	public function get(?CallLike $node, Scope $scope, string $name, ?string $displayName, ?string $definedIn, array $disallowedCalls, ?string $message = null): array
 	{
+		$errors = [];
 		foreach ($disallowedCalls as $disallowedCall) {
 			if (
 				$this->identifier->matches($disallowedCall->getCall(), $name, $disallowedCall->getExcludes())
@@ -70,12 +71,10 @@ class DisallowedCallsRuleErrors
 				if ($disallowedCall->getErrorTip()) {
 					$errorBuilder->tip($disallowedCall->getErrorTip());
 				}
-				return [
-					$errorBuilder->build(),
-				];
+				$errors[] = $errorBuilder->build();
 			}
 		}
-		return [];
+		return $errors;
 	}
 
 
